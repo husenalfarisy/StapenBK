@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>Generator Mahasiswa · Praktikum Statistik BK</title>
+<style>
+:root{--ink:#202633;--muted:#667085;--line:#dfe4eb;--wash:#f6f7fa;--pink:#b83280;--pink2:#8f2463;--green:#16805a;--blue:#2563a6}*{box-sizing:border-box}body{margin:0;background:#f2f4f7;color:var(--ink);font:15px/1.58 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}.wrap{max-width:1120px;margin:30px auto;padding:0 18px}.hero,.panel{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 7px 25px #16203308}.hero{padding:28px 30px}.kicker{color:var(--pink);font-size:11px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}.hero h1{font-size:clamp(27px,4vw,38px);letter-spacing:-.035em;line-height:1.15;margin:9px 0}.lead{max-width:850px;color:#505a69;margin:0}.notice{display:flex;gap:12px;padding:13px 15px;margin-top:20px;border:1px solid #f0d6e5;background:#fff7fb;border-radius:12px;color:#69364f;font-size:13px}.panel{padding:22px;margin-top:17px}.panel h2{font-size:19px;margin:0 0 6px}.muted{color:var(--muted);font-size:13px}.row{display:flex;align-items:end;gap:12px;flex-wrap:wrap;margin-top:15px}.field{flex:1 1 300px}.field label{display:block;font-weight:700;font-size:13px;margin-bottom:7px}.field input{width:100%;height:48px;border:1px solid #c8d0dc;border-radius:10px;padding:0 13px;font:inherit}.field input:focus{outline:3px solid #b8328020;border-color:var(--pink)}button{border:0;border-radius:10px;padding:12px 16px;font:700 14px inherit;cursor:pointer}.primary{background:var(--pink);color:#fff}.primary:hover{background:var(--pink2)}.dark{background:#273447;color:#fff}.soft{background:#f0f2f5;border:1px solid var(--line);color:#273447}.small{font-size:12px;padding:8px 11px}.state{display:none;margin-top:13px;padding:11px 13px;background:#eaf7f0;color:#176342;border-radius:9px;font-size:13px}.state.err{background:#fff0ee;color:#a33127}.meta{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}.metric{background:var(--wash);border-radius:10px;padding:11px 13px}.metric span{display:block;color:var(--muted);font-size:11px}.metric strong{font-size:16px}.casegrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:15px}.case{border:1px solid var(--line);border-radius:13px;padding:16px}.case h3{font-size:15px;margin:0 0 6px}.case p{margin:0;color:#4c5665;font-size:13px}.task{margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-size:12px;color:#596273}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.hidden{display:none!important}.guide{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:14px}.guide div{padding:13px;background:var(--wash);border-radius:11px}.guide b{display:block;font-size:13px}.guide span{font-size:12px;color:var(--muted)}.foot{font-size:12px;color:var(--muted);text-align:center;padding:22px 0 35px}@media(max-width:760px){.casegrid,.meta,.guide{grid-template-columns:1fr}.hero{padding:22px}.panel{padding:17px}.row button{width:100%}}
+</style></head><body><main class="wrap">
+<header class="hero"><div class="kicker">Praktikum Statistik · Program Studi Bimbingan dan Konseling</div><h1>Generator Dataset Individual</h1><p class="lead">Gunakan NIM untuk membangkitkan data individual bagi tujuh kasus penelitian BK. Setiap kasus disajikan dalam bentuk narasi; Anda perlu menentukan sendiri metode analisis yang tepat berdasarkan tujuan penelitian, desain, dan karakteristik data.</p><div class="notice"><span>ⓘ</span><span><b>Privasi:</b> NIM diproses di perangkat ini dan tidak dikirim ke server maupun dicantumkan dalam CSV. NIM yang sama pada versi generator ini akan menghasilkan dataset yang sama.</span></div></header>
+<section class="panel"><h2>1. Identitas dan pembuatan dataset</h2><p class="muted">NIM tidak perlu terdaftar pada daftar kelas. Masukkan NIM pribadi dengan benar agar data dapat dibuat ulang.</p><div class="row"><div class="field"><label for="nim">Nomor Induk Mahasiswa (NIM)</label><input id="nim" maxlength="40" autocomplete="off" spellcheck="false" placeholder="Masukkan NIM Anda"></div><button id="generate" class="primary">Buat 7 Dataset</button></div><div id="message" class="state" role="status" aria-live="polite"></div><div id="summary" class="meta hidden"><div class="metric"><span>Kode dataset</span><strong id="code">—</strong></div><div class="metric"><span>Kasus penelitian</span><strong>7 kasus</strong></div><div class="metric"><span>Total observasi</span><strong id="rows">—</strong></div></div><div class="actions"><button id="zip" class="dark" disabled>Unduh Paket Dataset (.zip)</button><button id="caseSheet" class="soft" disabled>Unduh Lembar Kasus (.txt)</button></div></section>
+<section class="panel"><h2>2. Tujuh kasus penelitian</h2><p class="muted">Baca narasi dan instruksi setiap kasus. Nama metode analisis tidak dicantumkan dalam lembar mahasiswa.</p><div class="casegrid" id="cases"></div></section>
+<section class="panel"><h2>3. Alur pengerjaan</h2><div class="guide"><div><b>01 · Pahami narasi</b><span>Identifikasi tujuan penelitian, variabel, dan desain.</span></div><div><b>02 · Tentukan analisis</b><span>Periksa karakteristik data dan pertanggungjawabkan pilihan metode.</span></div><div><b>03 · Analisis dan laporkan</b><span>Gunakan SPSS, hitung ukuran efek, lalu tulis kesimpulan.</span></div></div></section>
+<section class="panel"><h2>Catatan penggunaan</h2><ul class="muted"><li>Semua data merupakan data sintetis untuk pembelajaran, bukan data responden nyata.</li><li>Setiap file CSV memuat nama variabel pada baris pertama dan dapat diimpor melalui menu impor data SPSS.</li><li>Periksa asumsi yang relevan. Jangan memilih prosedur hanya karena pernah digunakan pada kasus sebelumnya.</li><li>NIM yang sama menghasilkan data yang sama pada versi 2.0. Simpan kode dataset untuk keperluan komunikasi dengan dosen.</li><li>File aplikasi mahasiswa tidak memuat kunci metode analisis. Gunakan hanya file ini untuk dibagikan kepada mahasiswa.</li></ul></section><div class="foot">Generator Mahasiswa Praktikum Statistik BK · Versi 2.0 · Offline</div>
+</main><script>
+/* Core pembangkit data bersama untuk aplikasi mahasiswa dan dosen. Versi: 2.0 */
+const APP_VERSION = '2.0';
+const CASES = [
+ {id:'C01',file:'Kasus_01.csv',title:'Kasus 1 · Kesiapan Karier',n:30,
+  short:'Skor kesiapan karier siswa kelas XII',
+  narrative:'Sebuah sekolah menetapkan skor 75 sebagai standar capaian kesiapan karier bagi siswa kelas XII. Konselor sekolah ingin mengetahui apakah rata-rata skor kesiapan karier siswa kelas XII di sekolah tersebut berbeda dari standar yang telah ditetapkan. Sebanyak 30 siswa dipilih dan diminta mengisi instrumen kesiapan karier. Skor instrumen berada pada rentang 0–100.',
+  tasks:'Identifikasi parameter yang ingin diketahui dan nilai pembandingnya. Rumuskan hipotesis statistik. Periksa karakteristik distribusi skor. Pilih analisis yang paling sesuai dan jelaskan alasan pemilihannya. Lakukan analisis di SPSS, hitung ukuran efek yang relevan, lalu tuliskan kesimpulan dalam format laporan penelitian BK.',
+  columns:'id_responden, skor_kesiapan_karier'},
+ {id:'C02',file:'Kasus_02.csv',title:'Kasus 2 · Regulasi Emosi',n:50,
+  short:'Skor regulasi emosi pada dua kelompok layanan',
+  narrative:'Seorang peneliti BK ingin membandingkan regulasi emosi siswa pada dua kelas yang memperoleh bentuk layanan berbeda. Kelas pertama mengikuti layanan bimbingan kelompok dan kelas kedua mengikuti layanan informasi klasikal. Setiap kelas terdiri atas 25 siswa. Setelah layanan selesai, seluruh siswa mengisi instrumen regulasi emosi dengan skor 0–100. Kedua kelas beranggotakan siswa yang berbeda.',
+  tasks:'Identifikasi variabel, kelompok yang dibandingkan, dan sifat hubungan antarresponden. Rumuskan hipotesis statistik. Periksa karakteristik distribusi masing-masing kelompok dan kesamaan varians. Pilih analisis yang paling sesuai serta jelaskan alasan pemilihannya. Lakukan analisis di SPSS, interpretasikan output yang relevan, hitung ukuran efek, lalu tuliskan kesimpulan penelitian.',
+  columns:'id_responden, kode_kelompok, skor_regulasi_emosi'},
+ {id:'C03',file:'Kasus_03.csv',title:'Kasus 3 · Kecemasan Menghadapi Ujian',n:25,
+  short:'Skor kecemasan pada dua waktu pengukuran',
+  narrative:'Guru BK menyelenggarakan program bimbingan kelompok untuk membantu siswa mengelola kecemasan menghadapi ujian. Sebanyak 25 siswa mengikuti program yang terdiri atas empat pertemuan. Instrumen kecemasan yang sama diberikan kepada setiap siswa sebelum pertemuan pertama dan setelah pertemuan keempat. Skor yang lebih tinggi menunjukkan kecemasan yang lebih tinggi. Peneliti ingin mengetahui apakah terjadi perubahan skor setelah program dilaksanakan.',
+  tasks:'Identifikasi variabel hasil dan struktur pengukuran. Jelaskan mengapa kedua skor dari seorang siswa tidak dapat diperlakukan sebagai dua kelompok yang terpisah. Bentuk skor perubahan, periksa karakteristik distribusinya, lalu tentukan analisis yang sesuai. Rumuskan hipotesis, lakukan analisis di SPSS, hitung ukuran efek, dan tuliskan kesimpulan secara hati-hati.',
+  columns:'id_responden, skor_sebelum, skor_sesudah'},
+ {id:'C04',file:'Kasus_04.csv',title:'Kasus 4 · Kematangan Karier',n:60,
+  short:'Skor kematangan karier pada tiga kelompok layanan',
+  narrative:'Sebuah penelitian mengevaluasi skor kematangan karier siswa setelah sekolah menyelenggarakan tiga bentuk layanan BK: layanan informasi karier, bimbingan kelompok, dan konseling kelompok. Setiap bentuk layanan diikuti oleh 20 siswa yang berbeda, sehingga jumlah keseluruhan peserta adalah 60 siswa. Setelah layanan, seluruh peserta mengisi instrumen kematangan karier dengan skor 0–100. Peneliti ingin mengetahui apakah rata-rata skor ketiga kelompok berbeda.',
+  tasks:'Identifikasi variabel hasil dan faktor pengelompokan. Jelaskan jumlah kelompok dan apakah anggotanya saling berpasangan. Rumuskan hipotesis statistik. Periksa karakteristik distribusi per kelompok dan kesamaan varians. Tentukan analisis yang tepat, lakukan analisis di SPSS, dan apabila hasil keseluruhan menunjukkan perbedaan, lanjutkan dengan prosedur perbandingan yang sesuai. Hitung ukuran efek dan tuliskan kesimpulan.',
+  columns:'id_responden, kode_layanan, skor_kematangan_karier'},
+ {id:'C05',file:'Kasus_05.csv',title:'Kasus 5 · Dukungan Sosial dan Kematangan Karier',n:40,
+  short:'Dua skor kuantitatif dari responden yang sama',
+  narrative:'Seorang peneliti ingin mengetahui apakah dukungan sosial orang tua berkaitan dengan kematangan karier siswa kelas XII. Sebanyak 40 siswa mengisi dua instrumen: instrumen dukungan sosial orang tua dan instrumen kematangan karier. Kedua instrumen menghasilkan skor kuantitatif. Peneliti ingin mengetahui arah dan kekuatan hubungan antara kedua skor tersebut, bukan menguji pengaruh sebab-akibat.',
+  tasks:'Identifikasi kedua variabel dan tujuan analisis. Buat scatterplot untuk memeriksa pola hubungan, periksa linearitas serta pencilan, kemudian pertimbangkan karakteristik distribusi data. Rumuskan hipotesis statistik. Pilih ukuran hubungan yang sesuai, lakukan analisis di SPSS, interpretasikan arah dan kekuatan hubungan, lalu tuliskan kesimpulan tanpa menyatakan hubungan sebab-akibat.',
+  columns:'id_responden, dukungan_sosial_orangtua, kematangan_karier'},
+ {id:'C06',file:'Kasus_06.csv',title:'Kasus 6 · Pengambilan Keputusan Karier',n:25,
+  short:'Skor keterampilan pengambilan keputusan pada dua waktu',
+  narrative:'Seorang konselor memberikan layanan informasi karier kepada 25 siswa kelas XII. Keterampilan pengambilan keputusan karier diukur menggunakan instrumen yang sama sebelum layanan dan satu minggu setelah layanan. Setiap siswa memberikan dua skor yang berpasangan. Peneliti ingin mengetahui apakah skor keterampilan pengambilan keputusan karier berubah setelah layanan. Skor berupa bilangan bulat pada rentang 0–100.',
+  tasks:'Identifikasi desain pengukuran dan bentuk pasangan data. Hitung atau periksa distribusi skor perubahan, perhatikan skor perubahan yang bernilai nol serta nilai yang sama. Tentukan analisis yang sesuai dengan karakteristik data dan desain penelitian. Rumuskan hipotesis, lakukan analisis di SPSS, interpretasikan tabel peringkat dan statistik pengujian, hitung ukuran efek yang relevan, lalu simpulkan.',
+  columns:'id_responden, keputusan_sebelum, keputusan_sesudah'},
+ {id:'C07',file:'Kasus_07.csv',title:'Kasus 7 · Penyesuaian Diri',n:50,
+  short:'Skor penyesuaian diri pada dua kelompok tempat tinggal',
+  narrative:'Peneliti BK ingin mengetahui apakah skor penyesuaian diri berbeda antara siswa yang tinggal di asrama dan siswa yang tinggal bersama orang tua. Penelitian melibatkan 25 siswa asrama dan 25 siswa yang tinggal bersama orang tua. Setiap siswa hanya menjadi anggota satu kelompok. Penyesuaian diri diukur menggunakan instrumen dengan skor 0–100.',
+  tasks:'Identifikasi variabel hasil dan variabel pengelompokan. Jelaskan apakah kedua kelompok saling independen atau berpasangan. Periksa karakteristik distribusi skor pada masing-masing kelompok dan pencilan. Tentukan analisis yang sesuai dengan desain dan karakteristik data. Rumuskan hipotesis, lakukan analisis di SPSS, interpretasikan peringkat dan statistik pengujian, hitung ukuran efek yang relevan, lalu tuliskan kesimpulan.',
+  columns:'id_responden, kode_tempat_tinggal, skor_penyesuaian_diri'}
+];
+
+function hash32(str){
+ let h=0x811c9dc5;
+ for(let i=0;i<str.length;i++){let c=str.charCodeAt(i);h^=c&0xff;h=Math.imul(h,0x01000193);if(c>0xff){h^=c>>>8;h=Math.imul(h,0x01000193);}}
+ return h>>>0;
+}
+function mulberry32(a){return function(){let t=a+=0x6D2B79F5;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return ((t^(t>>>14))>>>0)/4294967296;};}
+function normal(rng,mean=0,sd=1){let u=Math.max(rng(),1e-12),v=rng();return mean+sd*Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);}
+function clampRound(x,min=0,max=100){return Math.max(min,Math.min(max,Math.round(x)));}
+function intRand(rng,min,max){return Math.floor(rng()*(max-min+1))+min;}
+function normalizeNim(value){return String(value??'').normalize('NFKC').trim().toUpperCase().replace(/\s+/g,'');}
+function validateNim(value){const n=normalizeNim(value);if(n.length<3||n.length>40||!/^[A-Z0-9._/-]+$/.test(n))throw new Error('NIM harus berisi 3–40 karakter berupa huruf, angka, titik, garis miring, atau tanda hubung.');return n;}
+function makeExercise(ex,nim){
+ const seed=hash32('BK-STAT-2026|'+nim+'|'+ex.id+'|v2');
+ const rng=mulberry32(seed||0x9e3779b9);
+ const profile=hash32('PROFILE|'+nim+'|'+ex.id+'|v2')%6;
+ const rows=[];
+ if(ex.id==='C01'){
+  const shifts=[-5.8,-3.3,-1.0,1.0,3.3,5.8];
+  for(let i=1;i<=30;i++)rows.push({id_responden:'R'+String(i).padStart(2,'0'),skor_kesiapan_karier:clampRound(75+shifts[profile]+normal(rng,0,7),35,100)});
+ }else if(ex.id==='C02'){
+  const shifts=[-6,-3.5,-1.25,1.25,3.5,6];
+  for(let i=1;i<=50;i++){const g=i<=25?1:2;const base=68+(g===2?shifts[profile]:0);rows.push({id_responden:'R'+String(i).padStart(2,'0'),kode_kelompok:g,skor_regulasi_emosi:clampRound(normal(rng,base,8),30,100)});}
+ }else if(ex.id==='C03'){
+  const shifts=[-3.2,-2,-0.7,0.7,2,3.2];
+  for(let i=1;i<=25;i++){const pre=clampRound(normal(rng,65,8),30,95);const post=clampRound(pre+shifts[profile]+normal(rng,0,4.8),20,100);rows.push({id_responden:'R'+String(i).padStart(2,'0'),skor_sebelum:pre,skor_sesudah:post});}
+ }else if(ex.id==='C04'){
+  const amps=[0,1,2,3.2,4.5,6];
+  for(let i=1;i<=60;i++){const g=Math.ceil(i/20);const mean=68+(g-1)*amps[profile];rows.push({id_responden:'R'+String(i).padStart(2,'0'),kode_layanan:g,skor_kematangan_karier:clampRound(normal(rng,mean,7),30,100)});}
+ }else if(ex.id==='C05'){
+  const rhos=[-0.65,-0.4,-0.15,0.15,0.4,0.65],rho=rhos[profile];
+  for(let i=1;i<=40;i++){const z=normal(rng,0,1),e=normal(rng,0,1);const x=clampRound(55+11*z,15,95);const y=clampRound(58+10*(rho*z+Math.sqrt(1-rho*rho)*e),15,95);rows.push({id_responden:'R'+String(i).padStart(2,'0'),dukungan_sosial_orangtua:x,kematangan_karier:y});}
+ }else if(ex.id==='C06'){
+  const shifts=[-4,-2,-1,1,2,4],shift=shifts[profile];
+  for(let i=1;i<=25;i++){const pre=clampRound(normal(rng,50,7),30,70);let noise=0;if(rng()>0.6){const mag=[2,4,8,16][intRand(rng,0,3)];noise=(rng()<0.5?1:-1)*mag;}const delta=shift+noise;const post=clampRound(pre+delta,0,100);rows.push({id_responden:'R'+String(i).padStart(2,'0'),keputusan_sebelum:pre,keputusan_sesudah:post});}
+ }else if(ex.id==='C07'){
+  const shifts=[-9,-5,-2,2,5,9];
+  for(let i=1;i<=50;i++){const g=i<=25?1:2;const base=35+55*Math.pow(rng(),2.1)+(g===2?shifts[profile]:0);rows.push({id_responden:'R'+String(i).padStart(2,'0'),kode_tempat_tinggal:g,skor_penyesuaian_diri:clampRound(base,20,100)});}
+ }
+ return {id:ex.id,file:ex.file,n:ex.n,seed,rows,profile};
+}
+function generateAll(nimValue){const nim=validateNim(nimValue);const datasets=CASES.map(ex=>makeExercise(ex,nim));const code=hash32('BK-STAT-2026|'+nim+'|DATASET-CODE|v2').toString(16).toUpperCase().padStart(8,'0');return {nim,code,datasets,totalRows:datasets.reduce((a,d)=>a+d.rows.length,0)};}
+function csvFor(ds){const headers=Object.keys(ds.rows[0]);const lines=[headers.join(',')];for(const r of ds.rows)lines.push(headers.map(h=>String(r[h])).join(','));return '\uFEFF'+lines.join('\r\n')+'\r\n';}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+const CRC_TABLE=(()=>{const t=new Uint32Array(256);for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=(c&1)?(0xedb88320^(c>>>1)):(c>>>1);t[n]=c>>>0;}return t;})();
+function crc32(bytes){let c=0xffffffff;for(let i=0;i<bytes.length;i++)c=CRC_TABLE[(c^bytes[i])&0xff]^(c>>>8);return(c^0xffffffff)>>>0;}
+function u16(n){return[n&255,(n>>>8)&255];}function u32(n){return[n&255,(n>>>8)&255,(n>>>16)&255,(n>>>24)&255];}
+function zipStore(files){
+ const enc=new TextEncoder(),local=[],central=[];let offset=0;const now=new Date();
+ const dosTime=((now.getHours()<<11)|(now.getMinutes()<<5)|Math.floor(now.getSeconds()/2));
+ const dosDate=(((Math.max(1980,now.getFullYear())-1980)<<9)|((now.getMonth()+1)<<5)|now.getDate());
+ for(const f of files){const name=enc.encode(f.name),data=typeof f.data==='string'?enc.encode(f.data):f.data,crc=crc32(data);
+  const l=[0x50,0x4b,0x03,0x04,...u16(20),...u16(0x0800),...u16(0),...u16(dosTime),...u16(dosDate),...u32(crc),...u32(data.length),...u32(data.length),...u16(name.length),...u16(0),...name];local.push(new Uint8Array(l),data);
+  const c=[0x50,0x4b,0x01,0x02,...u16(20),...u16(20),...u16(0x0800),...u16(0),...u16(dosTime),...u16(dosDate),...u32(crc),...u32(data.length),...u32(data.length),...u16(name.length),...u16(0),...u16(0),...u16(0),...u16(0),...u32(0),...u32(offset),...name];central.push(new Uint8Array(c));offset+=l.length+data.length;
+ }
+ const csize=central.reduce((s,a)=>s+a.length,0),end=new Uint8Array([0x50,0x4b,0x05,0x06,...u16(0),...u16(0),...u16(files.length),...u16(files.length),...u32(csize),...u32(offset),...u16(0)]);
+ return new Blob([...local,...central,end],{type:'application/zip'});
+}
+function downloadBlob(content,filename,type){const blob=content instanceof Blob?content:new Blob([content],{type});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);}
+
+const $=id=>document.getElementById(id);let current=null;
+function notify(msg,err=false){const e=$('message');e.textContent=msg;e.className='state'+(err?' err':'');e.style.display='block';}
+function caseSheetText(){let s=['LEMBAR KASUS PRAKTIKUM STATISTIK BK','Versi generator: '+APP_VERSION,'Kode dataset: BK-'+current.code,'','PETUNJUK UMUM','1. Identifikasi tujuan penelitian, variabel, dan desain penelitian.','2. Tentukan metode analisis yang sesuai dan berikan alasan metodologis.','3. Rumuskan hipotesis statistik jika relevan.','4. Periksa asumsi berdasarkan desain dan karakteristik data.','5. Lakukan analisis menggunakan SPSS.','6. Hitung dan interpretasikan ukuran efek yang sesuai.','7. Tulis kesimpulan dalam format laporan penelitian BK.',''];CASES.forEach((c,i)=>{s.push(c.title.toUpperCase());s.push(c.narrative);s.push('TUGAS: '+c.tasks);s.push('DATA: '+c.file+' (N='+c.n+')');s.push('');});s.push('Data pada seluruh file bersifat sintetis untuk keperluan pembelajaran.');return s.join('\r\n');}
+function renderCases(){const root=$('cases');root.innerHTML='';CASES.forEach((c,i)=>{const a=document.createElement('article');a.className='case';const h=document.createElement('h3');h.textContent=c.title;const p=document.createElement('p');p.textContent=c.narrative;const t=document.createElement('div');t.className='task';t.textContent='Tugas: '+c.tasks;const m=document.createElement('div');m.className='muted';m.style.marginTop='9px';m.textContent='Dataset: '+c.file+' · N = '+c.n;a.append(h,p,t,m);root.append(a);});}
+function previewCSV(ds){const k=Object.keys(ds.rows[0]);let s=k.join(' | ')+'\n';ds.rows.slice(0,5).forEach(r=>s+=k.map(x=>r[x]).join(' | ')+'\n');return s;}
+function makeZipFiles(){const files=current.datasets.map(d=>({name:d.file,data:csvFor(d)}));files.push({name:'LEMBAR_KASUS.txt',data:caseSheetText()});files.push({name:'BACA_DULU.txt',data:'Paket data individual Praktikum Statistik BK\r\nVersi 2.0\r\nKode dataset: BK-'+current.code+'\r\n\r\nImpor file CSV ke SPSS dengan baris pertama sebagai nama variabel. Periksa definisi variabel, tipe data, dan karakteristik data sebelum menentukan metode analisis.\r\nSeluruh data adalah sintetis untuk pembelajaran.'});return files;}
+function gen(){try{current=generateAll($('nim').value);$('code').textContent='BK-'+current.code;$('rows').textContent=current.totalRows+' baris';$('summary').classList.remove('hidden');$('zip').disabled=false;$('caseSheet').disabled=false;notify('Dataset berhasil dibuat. Tujuh file CSV siap diunduh; narasi tidak menyebutkan nama metode analisis.');}catch(e){notify(e.message,true);}}
+$('generate').addEventListener('click',gen);$('nim').addEventListener('keydown',e=>{if(e.key==='Enter')gen();});$('zip').addEventListener('click',()=>{if(!current)return;downloadBlob(zipStore(makeZipFiles()),'Paket_Kasus_BK_'+current.code+'.zip','application/zip');});$('caseSheet').addEventListener('click',()=>{if(!current)return;downloadBlob(caseSheetText(),'Lembar_Kasus_BK_'+current.code+'.txt','text/plain;charset=utf-8');});renderCases();
+</script></body></html>
